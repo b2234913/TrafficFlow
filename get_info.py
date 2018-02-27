@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import BeautifulSoup
+import json
 from xml.dom import minidom
 want_vdid=[
            'nfbVD-N5-N-15.488-M',
@@ -28,8 +28,13 @@ want_vdid=[
            'nfbVD-N5-N-30.100-M'
            ];
 
+def writeToJSONFile(path, fileName, data):
+	filePathNameWExt =  path + '/' + fileName + '.json'
+	with open(filePathNameWExt, 'w') as fp:
+		json.dump(data, fp)
 
 def get_data_form_xml(filename):	
+	dataset = []
 	with open(filename) as f :
 		xml = minidom.parseString(f.read()).getElementsByTagName('Info')
 		for i in range(len(xml)) :
@@ -56,13 +61,18 @@ def get_data_form_xml(filename):
 					lane_data[carid] = int(volume)
 				lane.append(lane_data)
 			data['lane'] = lane
-	return data
+			for m in range(len(want_vdid)):
+				if want_vdid[m] == data['vdid']:
+					dataset.append(data)
+	return dataset
 
 
 def main():
 	filename = "../20180101/vd_value5_0000.xml"
+	name = filename.split('/')[-1].split('.')[0]
 	a = get_data_form_xml(filename)
-	print a
+	writeToJSONFile('../json',name,a)
+	
 
 
 if __name__ == "__main__":
