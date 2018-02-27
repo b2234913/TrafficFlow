@@ -68,10 +68,24 @@ def get_data_form_xml(filename):
 
 
 def main():
+	# full_dataset['time'] = 
 	filename = "../20180101/vd_value5_0000.xml"
-	name = filename.split('/')[-1].split('.')[0]
-	a = get_data_form_xml(filename)
-	writeToJSONFile('../json',name,a)
+	
+	for n in range(1,32):
+		
+		date = '201801' + str(n).zfill(2)
+		print date
+		# final_data = [] 
+		# for j in range(0,24,1):
+		# 	for i in range(0,60,5):
+		# 		full_dataset = {}
+		# 		time = str(j).zfill(2) + str(i).zfill(2)
+		# 		filename = '../' + date + '/vd_value5_' + time + '.xml'
+		# 		print filename
+		# 		full_dataset['data'] = get_data_form_xml(filename)
+		# 		full_dataset['time'] = time
+		# 		final_data.append(full_dataset)
+		# writeToJSONFile('../json',date,final_data)
 	
 
 
