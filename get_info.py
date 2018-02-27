@@ -75,17 +75,17 @@ def main():
 		
 		date = '201801' + str(n).zfill(2)
 		print date
-		# final_data = [] 
-		# for j in range(0,24,1):
-		# 	for i in range(0,60,5):
-		# 		full_dataset = {}
-		# 		time = str(j).zfill(2) + str(i).zfill(2)
-		# 		filename = '../' + date + '/vd_value5_' + time + '.xml'
-		# 		print filename
-		# 		full_dataset['data'] = get_data_form_xml(filename)
-		# 		full_dataset['time'] = time
-		# 		final_data.append(full_dataset)
-		# writeToJSONFile('../json',date,final_data)
+		final_data = [] 
+		for j in range(0,24,1):
+			for i in range(0,60,5):
+				full_dataset = {}
+				time = str(j).zfill(2) + str(i).zfill(2)
+				filename = '../' + date + '/vd_value5_' + time + '.xml'
+				print filename
+				full_dataset['data'] = get_data_form_xml(filename)
+				full_dataset['time'] = time
+				final_data.append(full_dataset)
+				writeToJSONFile('../json',date,final_data)
 	
 
 
