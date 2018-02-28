@@ -86,7 +86,7 @@ def main():
                     full_dataset['data'] = get_data_form_xml(filename)
                     full_dataset['time'] = time
                     final_data.append(full_dataset)
-		writeToJSONFile('../json',date,final_data)
+	writeToJSONFile('../json',date,final_data)
 	
 
 if __name__ == "__main__":
