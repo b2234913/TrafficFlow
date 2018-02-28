@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+import os 
+import sys
 import json
 from xml.dom import minidom
 want_vdid=[
@@ -69,25 +71,23 @@ def get_data_form_xml(filename):
 
 def main():
 	# full_dataset['time'] = 
-	filename = "../20180101/vd_value5_0000.xml"
+    # filename = "../20180101/vd_value5_0000.xml"
+    start = int(sys.argv[1])
+    end = int(sys.argv[2])
+    for n in range(start,end+1):
+        date = '201801' + str(n).zfill(2)
+        final_data = [] 
+        for j in range(0,24,1):
+            for i in range(0,60,5):
+                full_dataset = {}
+                time = str(j).zfill(2) + str(i).zfill(2)
+                filename = '../' + date + '/vd_value5_' + time + '.xml'
+                if os.path.isfile(filename) == True:
+                    full_dataset['data'] = get_data_form_xml(filename)
+                    full_dataset['time'] = time
+                    final_data.append(full_dataset)
+		writeToJSONFile('../json',date,final_data)
 	
-	for n in range(1,32):
-		
-		date = '201801' + str(n).zfill(2)
-		print date
-		final_data = [] 
-		for j in range(0,24,1):
-			for i in range(0,60,5):
-				full_dataset = {}
-				time = str(j).zfill(2) + str(i).zfill(2)
-				filename = '../' + date + '/vd_value5_' + time + '.xml'
-				print filename
-				full_dataset['data'] = get_data_form_xml(filename)
-				full_dataset['time'] = time
-				final_data.append(full_dataset)
-				writeToJSONFile('../json',date,final_data)
-	
-
 
 if __name__ == "__main__":
 	main()
