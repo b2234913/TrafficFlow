@@ -33,6 +33,7 @@ def plot(x,y,n):
 def main():
 	final_speed = []
 	final_volume = []
+	
 	final_laneoccupy = []
 	for i in range(1,2):
 		filename = '../json/201801'+ str(i).zfill(2) +'.json'
