@@ -12,6 +12,7 @@ def plot(x,y,n):
 		trend_line = dataX*coefficients[0] + coefficients[1]
 	print np.argmax(trend_line)
 
+
 	print coefficients
 	plt.plot(x,y,'*') 
 	# plt.plot(trend_line)
@@ -25,7 +26,8 @@ def plot(x,y,n):
 	plt.ylabel("final_volume") 
 	plt.title("The Title") 
     
-	plt.show() 
+    
+	# plt.show() 
     # 如果要存成圖形檔:
     # 把 pyplot.show() 換成下面這行:
 	# plt.savefig("filename.png",dpi=300,format="png") 

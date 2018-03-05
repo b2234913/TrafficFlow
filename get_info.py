@@ -30,6 +30,8 @@ want_vdid=[
            'nfbVD-N5-N-30.100-M'
            ];
 
+
+
 def writeToJSONFile(path, fileName, data):
 	filePathNameWExt =  path + '/' + fileName + '.json'
 	with open(filePathNameWExt, 'w') as fp:
