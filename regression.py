@@ -5,7 +5,7 @@ import numpy as np
 
 def plot(x,y,n):
 	dataX = np.arange(max(x))
-	coefficients = np.polyfit(y,x,n)
+	coefficients = np.polyfit(x,y,n)
 	if n == 2:
 		trend_line = dataX*dataX *coefficients[0] + dataX*coefficients[1]+coefficients[2]
 	elif n == 1:
@@ -15,7 +15,7 @@ def plot(x,y,n):
 
 	print coefficients
 	plt.plot(x,y,'*') 
-	# plt.plot(trend_line)
+	plt.plot(trend_line)
 
     # 設定圖的範圍, 不設的話，系統會自行決定
 	# plt.xlim(-30,390)
@@ -27,7 +27,7 @@ def plot(x,y,n):
 	plt.title("The Title") 
     
     
-	# plt.show() 
+	plt.show() 
     # 如果要存成圖形檔:
     # 把 pyplot.show() 換成下面這行:
 	# plt.savefig("filename.png",dpi=300,format="png") 
